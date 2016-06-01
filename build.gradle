@@ -16,7 +16,10 @@ repositories {
 dependencies {
     compile 'org.projectlombok:lombok:+'
     compile 'joda-time:joda-time:+'
+    compile 'mysql:mysql-connector-java:+'
+
 
     testCompile 'junit:junit:+'
+
 }
 

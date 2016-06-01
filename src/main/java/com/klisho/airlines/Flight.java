@@ -16,16 +16,14 @@ import java.util.List;
 @Data
 public class Flight {
 
+
+    private final int id; //added
     private final String flightNumber;
     private final String from; //IATA airport code: LED, DME..
     private final String to;
 
     private final LocalTime departureTime;
     private final List<Integer> daysOfWeek;
-
-
-
-
 
     public static final List<Integer> EVERY_DAY = Collections.unmodifiableList(new ArrayList(7) {
         {
