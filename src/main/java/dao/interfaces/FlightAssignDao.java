@@ -7,10 +7,24 @@ package dao.interfaces;
 import com.klisho.airlines.FlightAssignment;
 
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Optional;
 
-public interface FlightAssignDao extends Dao {
-    Optional<FlightAssignment> getInstanceById(int id);
+public class FlightAssignDao implements Dao {
+    private final Connection connection;
+
+    public FlightAssignDao(Connection connection) {
+        this.connection = connection;
+    }
+
+    @Override
+    public Connection getConnection() throws SQLException {
+        return connection;
+    }
+
+
+
 }
 
 

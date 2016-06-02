@@ -1,8 +1,11 @@
 package dao;
 
 import com.klisho.airlines.Employee;
+import com.klisho.airlines.Flight;
 import com.klisho.airlines.Profession;
 import dao.interfaces.EmployeeDao;
+import dao.interfaces.FlightDao;
+import org.joda.time.DateTimeConstants;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -71,6 +74,24 @@ public class MySQLDaoTest {
             Assert.assertEquals(e1.getFirstName(), "Алексей");
             Assert.assertEquals(e1.getLastName(), "Маресьев");
             Assert.assertEquals(e1.getProfession(), Profession.PILOT);
+        }
+    }
+
+    @Test
+    public void testFlightDao () {
+        FlightDao dao = new FlightDao(connection);
+        {
+            Optional<Flight> f1 = dao.getFlightById(1);
+            Assert.assertTrue(f1.isPresent());
+
+            System.out.println("flight 1: " + f1.get());
+
+            Assert.assertEquals(f1.get().getFlightNumber(), "SU 1142");
+            Assert.assertEquals(f1.get().getFrom(), "SVO");
+            Assert.assertEquals(f1.get().getTo(), "AAQ");
+            System.out.println("days of week " + f1.get().getDaysOfWeek());
+           //Assert.assertEquals(f1.get().getDaysOfWeek(), "1,5");
+
         }
     }
 
