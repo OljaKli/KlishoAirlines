@@ -22,8 +22,13 @@ CREATE TABLE Flight (
 
 CREATE TABLE FlightDays
 (
-  day INT,
-  flightId INT,
+  flightId INT NOT NULL,
+  day INT NOT NULL,
+
+  -- CONSTRAINT cc_day CHECK (day BETWEEN 1 AND 7),
+  -- The CHECK clause is parsed but ignored by all storage engines.
+
+  CONSTRAINT uc_flightDay UNIQUE (flightId, day),
 
   FOREIGN KEY (flightId)
   REFERENCES Flight(ID)
@@ -39,6 +44,7 @@ INSERT INTO Employee (firstName, lastName, profession) VALUES ('Леонид', '
 INSERT INTO Employee (firstName, lastName, profession) VALUES ('Харитон', 'Цховребов', 0);
 
 -- Стюардессы:
+INSERT INTO Employee (firstName, lastName, profession) VALUES ('Весна', 'Вулович', 3);
 INSERT INTO Employee (firstName, lastName, profession) VALUES ('Сьюзан', 'Хелмс', 3);
 INSERT INTO Employee (firstName, lastName, profession) VALUES ('Калпана', 'Чавла', 3);
 INSERT INTO Employee (firstName, lastName, profession) VALUES ('Татьяна', 'Иванова', 3);
@@ -94,6 +100,7 @@ INSERT INTO FlightDays (day, flightId) VALUES (7,2);
 INSERT INTO FlightDays (day, flightId) VALUES (5,1);
 INSERT INTO FlightDays (day, flightId) VALUES (3,2);
 INSERT INTO FlightDays (day, flightId) VALUES (5,2);
+INSERT INTO FlightDays (day, flightId) VALUES (5,3);
 INSERT INTO FlightDays (day, flightId) VALUES (1,3);
 INSERT INTO FlightDays (day, flightId) VALUES (7,4);
 INSERT INTO FlightDays (day, flightId) VALUES (7,5);
@@ -103,4 +110,3 @@ INSERT INTO FlightDays (day, flightId) VALUES (1,8);
 INSERT INTO FlightDays (day, flightId) VALUES (7,9);
 INSERT INTO FlightDays (day, flightId) VALUES (7,10);
 INSERT INTO FlightDays (day, flightId) VALUES (3,10);
-INSERT INTO FlightDays (day, flightId) VALUES (5,3);

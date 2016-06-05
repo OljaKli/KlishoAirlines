@@ -13,6 +13,10 @@
             <element id="module-output" name="KlishoAirlines_main" />
             <element id="dir-copy" path="$PROJECT_DIR$/build/resources/main" />
           </element>
+          <element id="directory" name="lib">
+            <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.16.8/2ce9de13f277ec1600e7e04231477e3e5f59d317/lombok-1.16.8.jar" />
+            <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.9.4/1c295b462f16702ebe720bbb08f62e1ba80da41b/joda-time-2.9.4.jar" />
+          </element>
         </element>
         <element id="directory" name="META-INF">
           <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/KlishoAirlines/exploded/KlishoAirlines.war/META-INF/MANIFEST.MF" />
@@ -31,9 +35,28 @@
             <element id="module-output" name="KlishoAirlines_main" />
             <element id="dir-copy" path="$PROJECT_DIR$/build/resources/main" />
           </element>
+          <element id="directory" name="lib">
+            <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.16.8/2ce9de13f277ec1600e7e04231477e3e5f59d317/lombok-1.16.8.jar" />
+            <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.9.4/1c295b462f16702ebe720bbb08f62e1ba80da41b/joda-time-2.9.4.jar" />
+          </element>
         </element>
         <element id="directory" name="META-INF">
           <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/KlishoAirlines/exploded/KlishoAirlines.war/META-INF/MANIFEST.MF" />
+        </element>
+      </root>
+    </artifact>
+    <artifact type="exploded-war" name="KlishoAirlines:war exploded">
+      <output-path>$PROJECT_DIR$/out/artifacts/KlishoAirlines_war_exploded</output-path>
+      <root id="root">
+        <element id="javaee-facet-resources" facet="KlishoAirlines/web/Web" />
+        <element id="directory" name="WEB-INF">
+          <element id="directory" name="classes">
+            <element id="module-output" name="KlishoAirlines" />
+          </element>
+          <element id="directory" name="lib">
+            <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.16.8/2ce9de13f277ec1600e7e04231477e3e5f59d317/lombok-1.16.8.jar" />
+            <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.9.4/1c295b462f16702ebe720bbb08f62e1ba80da41b/joda-time-2.9.4.jar" />
+          </element>
         </element>
       </root>
     </artifact>
@@ -59,7 +82,7 @@
     </bytecodeTargetLevel>
   </component>
   <component name="CopyrightManager" default="" />
-  <component name="DataSourceManagerImpl" format="xml" hash="761613769">
+  <component name="DataSourceManagerImpl" format="xml" hash="3889989340">
     <data-source source="LOCAL" name="MySQL - airlines@localhost" uuid="d11899e6-79a7-41e1-82c6-c481a4463011">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
@@ -78,7 +101,9 @@
   <component name="DependencyValidationManager">
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
-  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
