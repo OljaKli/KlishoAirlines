@@ -19,6 +19,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+import static org.joda.time.LocalTime.parse;
+
 /**
  * Created by Ola-Mola on 01/06/16.
  */
@@ -91,7 +93,7 @@ public class MySQLDaoTest {
             Assert.assertEquals("SU 1142", f1.get().getFlightNumber());
             Assert.assertEquals("SVO", f1.get().getFrom());
             Assert.assertEquals("AAQ", f1.get().getTo());
-            Assert.assertEquals(LocalTime.parse("14:55:00"), f1.get().getDepartureTime());
+            Assert.assertEquals(parse("14:55:00"), f1.get().getDepartureTime());
             System.out.println(f1.get().getFlightNumber() + " days of week " + f1.get().getDaysOfWeek());
             Assert.assertEquals(2, f1.get().getDaysOfWeek().size());
 
@@ -113,7 +115,7 @@ public class MySQLDaoTest {
             Assert.assertEquals("SU 100", f5.getFlightNumber());
             Assert.assertEquals("SVO", f5.getFrom());
             Assert.assertEquals("JFK", f5.getTo());
-            Assert.assertEquals(LocalTime.parse("09:40"), f5.getDepartureTime());
+            Assert.assertEquals(parse("09:40"), f5.getDepartureTime());
 
             System.out.println(f5.getFlightNumber() + " days of week: " + f5.getDaysOfWeek());
             Assert.assertEquals(1, f5.getDaysOfWeek().size());
@@ -128,6 +130,19 @@ public class MySQLDaoTest {
 //            Assert.assertEquals(f1.get().getTo(), "AAQ");
 //            System.out.println("days of week " + f1.get().getDaysOfWeek());
 //            Assert.assertEquals(f1.get().getDaysOfWeek().size(), 2);
+
+        }
+    }
+
+
+    @Test
+    public void testCreateFlight () {
+        FlightDao dao = new FlightDao(connection);
+        {
+
+            Optional<Flight> newflight = dao.createFlight("SU 2100", "SVO", "IST", parse("21:25"));
+            System.out.println(newflight);
+            Assert.assertEquals("SU 2100", newflight.get().getFlightNumber());
 
         }
     }

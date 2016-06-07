@@ -1,19 +1,10 @@
 package dao.interfaces;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.*;
 
-import com.klisho.airlines.Employee;
 import com.klisho.airlines.Flight;
-import com.klisho.airlines.Profession;
 import org.joda.time.*;
-import sun.security.util.Length;
-
-import static com.klisho.airlines.Flight.EVERY_DAY;
-import static java.time.format.DateTimeFormatter.ISO_LOCAL_TIME;
 
 /**
  * Created by Ola-Mola on 30/05/16.
@@ -91,6 +82,36 @@ public class FlightDao implements Dao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public Optional<Flight> createFlight(String flightNumber, String apFrom, String apTo, LocalTime departureTime) {
+        try {
+
+            final PreparedStatement prStatement = connection.prepareStatement(
+                    "INSERT INTO Flight (flightNumber, apfrom, apto, departureTime) values (?, ?, ?, ?)",
+                    Statement.RETURN_GENERATED_KEYS);
+
+            prStatement.setString(1, flightNumber);
+            prStatement.setString(2, apFrom);
+            prStatement.setString(3, apTo);
+            prStatement.setString(4, departureTime.toString(("HH:mm")));
+
+           int rowsAffected = prStatement.executeUpdate();//rowsAffected = the number of changed rows
+
+            ResultSet rs = prStatement.getGeneratedKeys();
+            if (rs.next()) {
+               // prStatement.executeUpdate();
+                int id = rs.getInt(1);
+                return getFlightById(id);
+            }
+            else  {
+                throw new RuntimeException("Failed to insert new flight");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 }

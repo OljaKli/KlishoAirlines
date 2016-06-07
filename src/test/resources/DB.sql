@@ -16,7 +16,9 @@ CREATE TABLE Flight (
   flightNumber VARCHAR(10) NOT NULL,
   apfrom VARCHAR(4) NOT NULL,
   apto VARCHAR(4) NOT NULL,
-  departureTime TIME NOT NULL
+  departureTime TIME NOT NULL,
+
+  CONSTRAINT uc_Flight UNIQUE (flightNumber)
 );
 
 

@@ -14,6 +14,7 @@
 </head>
 <body>
 User '<%=request.getRemoteUser()%>' has been logged out.
+<%--expression--%>
 <% session.invalidate(); %>
 
 <br/><br/>

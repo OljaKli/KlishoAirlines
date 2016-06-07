@@ -52,30 +52,39 @@
         <mandatory>1</mandatory>
         <data-type>time</data-type>
       </column>
-      <key id="15" parent="3" name="PRIMARY">
+      <index id="15" parent="3" name="uc_Flight">
+        <columns>flightNumber</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="16" parent="3" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <column id="16" parent="4" name="flightId">
+      <key id="17" parent="3" name="uc_Flight">
+        <columns>flightNumber</columns>
+        <underlying-index>uc_Flight</underlying-index>
+      </key>
+      <column id="18" parent="4" name="flightId">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="17" parent="4" name="day">
+      <column id="19" parent="4" name="day">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <index id="18" parent="4" name="uc_flightDay">
+      <index id="20" parent="4" name="uc_flightDay">
         <columns>flightId
 day</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="19" parent="4" name="uc_flightDay">
+      <key id="21" parent="4" name="uc_flightDay">
         <columns>flightId
 day</columns>
         <underlying-index>uc_flightDay</underlying-index>
       </key>
-      <foreign-key id="20" parent="4" name="flightdays_ibfk_1">
+      <foreign-key id="22" parent="4" name="flightdays_ibfk_1">
         <columns>flightId</columns>
         <ref-key>~.Flight.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
