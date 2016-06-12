@@ -7,15 +7,11 @@ import lombok.*;
 
 import org.joda.time.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
+import java.util.*;
 
 
 @Data
 public class Flight {
-
 
     private final int id; //added
     private final String flightNumber;
@@ -37,4 +33,36 @@ public class Flight {
         }
     });
 
+    private static final Map<Integer, String> dayNames = new HashMap<Integer, String>() {
+        {
+            put(DateTimeConstants.MONDAY,   "пн");
+            put(DateTimeConstants.TUESDAY,  "вт");
+            put(DateTimeConstants.WEDNESDAY, "ср");
+            put(DateTimeConstants.THURSDAY, "чт");
+            put(DateTimeConstants.FRIDAY,   "пт");
+            put(DateTimeConstants.SATURDAY, "сб");
+            put(DateTimeConstants.SUNDAY,   "вс");
+        }
+    };
+
+    private static String dayToStr(Integer day) {
+        return dayNames.get(day);
+    }
+
+    public String getDepartureTimeStr() {
+        return getDepartureTime().toString("HH:mm");
+    }
+
+    public String getDaysOfWeekStr() {
+        StringBuilder builder = new StringBuilder();
+
+        for (Integer day : getDaysOfWeek()) {
+            if (builder.length() > 0) {
+                builder.append(", ");
+            }
+
+            builder.append(dayToStr(day));
+        }
+        return builder.toString();
+    }
 }

@@ -16,6 +16,7 @@ import java.security.cert.PKIXRevocationChecker;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -137,16 +138,15 @@ public class MySQLDaoTest {
 
     @Test
     public void testCreateFlight () {
+
         FlightDao dao = new FlightDao(connection);
         {
-
-            Optional<Flight> newflight = dao.createFlight("SU 2100", "SVO", "IST", parse("21:25"));
+            long dateTime = new Date().getTime() % 1000000;
+            Optional<Flight> newflight = dao.createFlight("" + dateTime, "SVO", "IST", parse("21:25"));
             System.out.println(newflight);
-            Assert.assertEquals("SU 2100", newflight.get().getFlightNumber());
-
+            Assert.assertEquals("" + dateTime, newflight.get().getFlightNumber());
         }
     }
-
 
     @AfterClass
     public static void finish() throws Exception {

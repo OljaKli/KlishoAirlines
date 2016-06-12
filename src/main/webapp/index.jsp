@@ -26,9 +26,9 @@
 
 
 
-<a href="./admin/"><fmt:message bundle="${l10n}" key="index.admPage"/></a><br/>
-<a href="./disp/"><fmt:message bundle="${l10n}" key="index.dispPage"/></a><br/>
-<a href="./logout.jsp"><fmt:message bundle="${l10n}" key="index.logout"/></a><br/>
+<a href="${pageContext.request.contextPath}/admin/"><fmt:message bundle="${l10n}" key="index.admPage"/></a><br/>
+<a href="${pageContext.request.contextPath}/disp/"><fmt:message bundle="${l10n}" key="index.dispPage"/></a><br/>
+<a href="${pageContext.request.contextPath}/logout.jsp"><fmt:message bundle="${l10n}" key="index.logout"/></a><br/>
 </body>
 </html>
 

@@ -61,7 +61,7 @@ public class FlightDao implements Dao {
 
             }
 
-    public Collection<Flight> getAllFlights() {
+    public List<Flight> getAllFlights() {
         try {
 
             final Statement statement = connection.createStatement();
@@ -69,7 +69,7 @@ public class FlightDao implements Dao {
                     "SELECT id, flightNumber, apfrom, apto, departureTime FROM Flight ORDER BY id"
             );
 
-            Collection<Flight> flights = new LinkedList<>();
+            List<Flight> flights = new LinkedList<>();
             while (resultSet.next()) {
                 int flightId = resultSet.getInt("id");
 
@@ -84,7 +84,7 @@ public class FlightDao implements Dao {
         }
     }
 
-    public Optional<Flight> createFlight(String flightNumber, String apFrom, String apTo, LocalTime departureTime) {
+    public Optional<Flight> createFlight(String flightNumber, String apFrom, String apTo, LocalTime departureTime, List<Integer> days) {
         try {
 
             final PreparedStatement prStatement = connection.prepareStatement(
@@ -102,6 +102,9 @@ public class FlightDao implements Dao {
             if (rs.next()) {
                // prStatement.executeUpdate();
                 int id = rs.getInt(1);
+
+                // TODO insert days of week
+
                 return getFlightById(id);
             }
             else  {
