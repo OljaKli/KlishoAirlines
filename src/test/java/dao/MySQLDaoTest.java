@@ -105,12 +105,12 @@ public class MySQLDaoTest {
     public void testAllFlightsDao () {
         FlightDao dao = new FlightDao(connection);
         {
-            Collection<Flight> flights = dao.getAllFlights();
+            List<Flight> flights = dao.getAllFlights();
 
             Assert.assertFalse(flights.isEmpty());
             Assert.assertTrue(flights.size() >= 10);
 
-            Flight f5 = ((List<Flight>)flights).get(5);
+            Flight f5 = flights.get(5);
 
             // ('SU 100', 'SVO', 'JFK', '09:40:00');
             Assert.assertEquals("SU 100", f5.getFlightNumber());
@@ -142,7 +142,7 @@ public class MySQLDaoTest {
         FlightDao dao = new FlightDao(connection);
         {
             long dateTime = new Date().getTime() % 1000000;
-            Optional<Flight> newflight = dao.createFlight("" + dateTime, "SVO", "IST", parse("21:25"));
+            Optional<Flight> newflight = dao.createFlight("" + dateTime, "SVO", "IST", parse("21:25"), Flight.EVERY_DAY);
             System.out.println(newflight);
             Assert.assertEquals("" + dateTime, newflight.get().getFlightNumber());
         }

@@ -36,6 +36,12 @@ public class AdminController extends HttpServlet {
             try {
                 FlightDao dao = new FlightDao(conn);
 
+                String cancelId = request.getParameter("delete");
+                if (cancelId != null && !cancelId.isEmpty()) {
+                    int cancelIdInt = Integer.parseInt(cancelId);
+                    dao.cancelFlight(cancelIdInt);
+                }
+
                 List<Flight> flights = dao.getAllFlights();
                 request.setAttribute("flights", flights);
 

@@ -17,6 +17,7 @@ CREATE TABLE Flight (
   apfrom VARCHAR(4) NOT NULL,
   apto VARCHAR(4) NOT NULL,
   departureTime TIME NOT NULL,
+  canceled BOOL DEFAULT FALSE,
 
   CONSTRAINT uc_Flight UNIQUE (flightNumber)
 );

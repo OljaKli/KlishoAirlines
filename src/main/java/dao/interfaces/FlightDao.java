@@ -52,21 +52,32 @@ public class FlightDao implements Dao {
     }
 
     private Flight toFlight(ResultSet resultSet, List<Integer>daysList) throws SQLException {
-                return new Flight(resultSet.getInt("id"),
-                        resultSet.getString("flightNumber"),
-                        resultSet.getString("apfrom"),
-                        resultSet.getString("apto"),
-                        LocalTime.parse(resultSet.getString("departureTime")),
-                        daysList);
+        return new Flight(resultSet.getInt("id"),
+                resultSet.getString("flightNumber"),
+                resultSet.getString("apfrom"),
+                resultSet.getString("apto"),
+                LocalTime.parse(resultSet.getString("departureTime")),
+                daysList);
 
-            }
+    }
 
     public List<Flight> getAllFlights() {
+        return getAllFlights(false);
+    }
+
+    /**
+     *
+     * @param canceled - include only canceled flight to result, otherwise only actual flight
+     * @return
+     */
+    public List<Flight> getAllFlights(boolean canceled) {
         try {
 
             final Statement statement = connection.createStatement();
             final ResultSet resultSet = statement.executeQuery(
-                    "SELECT id, flightNumber, apfrom, apto, departureTime FROM Flight ORDER BY id"
+                    "SELECT id, flightNumber, apfrom, apto, departureTime FROM Flight"
+                    + (canceled ? " WHERE canceled = TRUE" : " WHERE canceled = FALSE")
+                    + " ORDER BY id"
             );
 
             List<Flight> flights = new LinkedList<>();
@@ -79,6 +90,20 @@ public class FlightDao implements Dao {
             }
             return flights;
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean cancelFlight(int flightId) {
+        try {
+            final PreparedStatement prStatement = connection.prepareStatement(
+                    "UPDATE Flight SET canceled = TRUE WHERE ID = ?");
+
+            prStatement.setInt(1, flightId);
+
+            int rowsAffected = prStatement.executeUpdate();//rowsAffected = the number of changed rows
+            return rowsAffected >= 1;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
