@@ -16,6 +16,7 @@ import javax.sql.DataSource;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -74,13 +75,37 @@ public class AdminController extends HttpServlet {
                 String to = request.getParameter("to");
                 String departureTime = request.getParameter("departureTime");
                 // TODO  распарсить галочки дней в List<Integer>, передать вместо EVERY_DAY
-                // написать отдельный метод
+                // написать отдельный метод, а мб и нет
+
+               List<Integer> daysOfWeek = new ArrayList<Integer>();
+
+                if(request.getParameter("chkMon") != null) {
+                daysOfWeek.add(1);    }
+
+                if(request.getParameter("chkTue") != null) {
+                    daysOfWeek.add(2);    }
+
+                if(request.getParameter("chkWed") != null) {
+                    daysOfWeek.add(3);    }
+
+                if(request.getParameter("chkThu") != null) {
+                    daysOfWeek.add(4);    }
+
+                if(request.getParameter("chkFri") != null) {
+                    daysOfWeek.add(5);    }
+
+                if(request.getParameter("chkSat") != null) {
+                    daysOfWeek.add(6);    }
+
+                if(request.getParameter("chkSun") != null) {
+                    daysOfWeek.add(7);    }
+
 
                 if (flightNumber != null &&
                         from != null &&
                         to != null &&
                         departureTime != null) {
-                    dao.createFlight(flightNumber, from, to, LocalTime.parse(departureTime), Flight.EVERY_DAY);
+                    dao.createFlight(flightNumber, from, to, LocalTime.parse(departureTime), daysOfWeek);
                 }
 
                 List<Flight> flights = dao.getAllFlights();

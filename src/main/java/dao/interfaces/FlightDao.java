@@ -121,7 +121,9 @@ public class FlightDao implements Dao {
             prStatement.setString(3, apTo);
             prStatement.setString(4, departureTime.toString(("HH:mm")));
 
-           int rowsAffected = prStatement.executeUpdate();//rowsAffected = the number of changed rows
+
+
+            int rowsAffected = prStatement.executeUpdate();//rowsAffected = the number of changed rows
 
             ResultSet rs = prStatement.getGeneratedKeys();
             if (rs.next()) {
@@ -129,6 +131,17 @@ public class FlightDao implements Dao {
                 int id = rs.getInt(1);
 
                 // TODO insert days of week
+               // for (int n: days) {
+                final PreparedStatement prStatement2 = connection.prepareStatement(
+                        "INSERT INTO FlightDays (flightId, day) values (?,?)");
+                prStatement2.setInt(1, id);
+
+                for (int n = 0; n < days.size(); n++) {
+                    prStatement2.setInt(2, days.get(n));
+                    int rowsAffected2 = prStatement2.executeUpdate();
+                }
+                //int rowsAffected2 = prStatement2.executeUpdate();
+
 
                 return getFlightById(id);
             }

@@ -19,6 +19,14 @@
     <fmt:message bundle="${l10n}" key="admin.flight.to"/>:             <input type="text" name="to" /><br/>
     <fmt:message bundle="${l10n}" key="admin.flight.depart"/>: <input type="text" name="departureTime" /><br/>
     <!-- галочки для дней недели -->
+    <fmt:message bundle="${l10n}" key="admin.flight.monday"/> <input type="checkbox" name="chkMon" />
+    <fmt:message bundle="${l10n}" key="admin.flight.tuesday"/> <input type="checkbox" name="chkTue" />
+    <fmt:message bundle="${l10n}" key="admin.flight.wednesday"/> <input type="checkbox" name="chkWed" />
+    <fmt:message bundle="${l10n}" key="admin.flight.thursday"/> <input type="checkbox" name="chkThu" />
+    <fmt:message bundle="${l10n}" key="admin.flight.friday"/>  <input type="checkbox" name="chkFri" />
+    <fmt:message bundle="${l10n}" key="admin.flight.saturday"/>  <input type="checkbox" name="chkSat"/>
+    <fmt:message bundle="${l10n}" key="admin.flight.sunday"/>  <input type="checkbox" name="chkSun"/><br/>
+
     <input type="submit" value="Create">
 </form>
 
@@ -32,6 +40,9 @@
         <th><fmt:message bundle="${l10n}" key="admin.flight.days"/></th>
         <th></th>
     </tr>
+
+
+
     <c:forEach var="flight" items="${flights}">
         <tr>
             <td>${flight.flightNumber}</td>
