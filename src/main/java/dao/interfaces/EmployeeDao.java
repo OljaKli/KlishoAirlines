@@ -47,11 +47,33 @@ public class EmployeeDao implements Dao {
             Profession.values()[resultSet.getInt("profession")]);
     }
 
-    public Collection<Employee> getAll() {
+    public Collection<Employee> getAllEmployees() {
         try {
             final Statement statement = connection.createStatement();
             final ResultSet resultSet = statement.executeQuery(
                     "SELECT id, firstName, lastName, profession FROM Employee ORDER BY id"
+            );
+
+            Collection<Employee> emps = new LinkedList<>();
+            while (resultSet.next()) {
+                emps.add(toEmployee(resultSet));
+            }
+            return emps;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Collection<Employee> getAllEmployeesByProf(Profession prof) {
+        Integer intProf = Employee.profToInt(prof);
+//public Collection<Employee> getAllEmployeesByProf(int prof) {
+
+
+        try {
+            final Statement statement = connection.createStatement();
+            final ResultSet resultSet = statement.executeQuery(
+                    "SELECT id, firstName, lastName, profession FROM Employee WHERE profession = " + intProf
+//                            + "ORDER BY id"
             );
 
             Collection<Employee> emps = new LinkedList<>();

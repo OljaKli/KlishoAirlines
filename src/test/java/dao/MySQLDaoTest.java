@@ -69,7 +69,7 @@ public class MySQLDaoTest {
         EmployeeDao dao = new EmployeeDao(connection);
 
         {
-            Collection<Employee> emps = dao.getAll();
+            Collection<Employee> emps = dao.getAllEmployees();
 
             System.out.println("Total " + emps.size() + " employees");
 

@@ -1,3 +1,4 @@
+DROP TABLE FlightAssign;
 DROP TABLE Employee;
 
 CREATE TABLE Employee (
@@ -6,6 +7,8 @@ CREATE TABLE Employee (
   lastName    VARCHAR(255) CHARACTER SET utf8 NOT NULL,
   profession INT
 );
+
+
 
 DROP TABLE FlightDays;
 DROP TABLE Flight;
@@ -39,24 +42,56 @@ CREATE TABLE FlightDays
 );
 
 
+CREATE TABLE FlightAssign
+(
+  flightId INT NOT NULL,
+
+  Pilot INT NOT NULL,
+  Radiop INT NOT NULL,
+  Navigator INT NOT NULL,
+  Hostess1 INT NOT NULL,
+  Hostess2 INT NOT NULL,
+  Hostess3 INT NOT NULL,
+
+
+  CONSTRAINT uc_Flight UNIQUE (flightId),
+
+  FOREIGN KEY (flightId)
+  REFERENCES Flight(ID)
+  ON DELETE CASCADE,
+
+  FOREIGN KEY (Pilot)
+  REFERENCES Employee(id)
+  ON DELETE CASCADE,
+
+  FOREIGN KEY (Radiop)
+  REFERENCES Employee(id)
+  ON DELETE CASCADE,
+
+  FOREIGN KEY (Navigator)
+  REFERENCES Employee(id)
+  ON DELETE CASCADE,
+
+  FOREIGN KEY (Hostess1)
+  REFERENCES Employee(id)
+  ON DELETE CASCADE,
+
+  FOREIGN KEY (Hostess2)
+  REFERENCES Employee(id)
+  ON DELETE CASCADE,
+
+  FOREIGN KEY (Hostess3)
+  REFERENCES Employee(id)
+  ON DELETE CASCADE
+
+);
+
 -- Пилоты:
 INSERT INTO Employee (firstName, lastName, profession) VALUES ('Алексей', 'Маресьев', 0);
 INSERT INTO Employee (firstName, lastName, profession) VALUES ('Иван', 'Кожедуб', 0);
 INSERT INTO Employee (firstName, lastName, profession) VALUES ('Александр', 'Покрышкин', 0);
 INSERT INTO Employee (firstName, lastName, profession) VALUES ('Леонид', 'Жолудев', 0);
 INSERT INTO Employee (firstName, lastName, profession) VALUES ('Харитон', 'Цховребов', 0);
-
--- Стюардессы:
-INSERT INTO Employee (firstName, lastName, profession) VALUES ('Весна', 'Вулович', 3);
-INSERT INTO Employee (firstName, lastName, profession) VALUES ('Сьюзан', 'Хелмс', 3);
-INSERT INTO Employee (firstName, lastName, profession) VALUES ('Калпана', 'Чавла', 3);
-INSERT INTO Employee (firstName, lastName, profession) VALUES ('Татьяна', 'Иванова', 3);
-INSERT INTO Employee (firstName, lastName, profession) VALUES ('Валентина', 'Терешкова', 3);
-INSERT INTO Employee (firstName, lastName, profession) VALUES ('Анна Ли', 'Фишер', 3);
-INSERT INTO Employee (firstName, lastName, profession) VALUES ('Жюли', 'Пейетт', 3);
-INSERT INTO Employee (firstName, lastName, profession) VALUES ('Мукаи', 'Тиаки', 3);
-INSERT INTO Employee (firstName, lastName, profession) VALUES ('Кондакова', 'Елена', 3);
-INSERT INTO Employee (firstName, lastName, profession) VALUES ('Пегги', 'Уитсон', 3);
 
 -- Радиооператоры:
 INSERT INTO Employee (firstName, lastName, profession) VALUES ('Станислав', 'Буневич', 1);
@@ -71,6 +106,18 @@ INSERT INTO Employee (firstName, lastName, profession) VALUES ('Френсис',
 INSERT INTO Employee (firstName, lastName, profession) VALUES ('Эдвард', 'Тич', 2);
 INSERT INTO Employee (firstName, lastName, profession) VALUES ('Уильям', 'Кидд', 2);
 INSERT INTO Employee (firstName, lastName, profession) VALUES ('Мэри', 'Рид', 2);
+
+-- Стюардессы:
+INSERT INTO Employee (firstName, lastName, profession) VALUES ('Весна', 'Вулович', 3);
+INSERT INTO Employee (firstName, lastName, profession) VALUES ('Сьюзан', 'Хелмс', 3);
+INSERT INTO Employee (firstName, lastName, profession) VALUES ('Калпана', 'Чавла', 3);
+INSERT INTO Employee (firstName, lastName, profession) VALUES ('Татьяна', 'Иванова', 3);
+INSERT INTO Employee (firstName, lastName, profession) VALUES ('Валентина', 'Терешкова', 3);
+INSERT INTO Employee (firstName, lastName, profession) VALUES ('Анна Ли', 'Фишер', 3);
+INSERT INTO Employee (firstName, lastName, profession) VALUES ('Жюли', 'Пейетт', 3);
+INSERT INTO Employee (firstName, lastName, profession) VALUES ('Мукаи', 'Тиаки', 3);
+INSERT INTO Employee (firstName, lastName, profession) VALUES ('Кондакова', 'Елена', 3);
+INSERT INTO Employee (firstName, lastName, profession) VALUES ('Пегги', 'Уитсон', 3);
 
 -- Рейсы:
 # INSERT INTO Flight (flightNumber, apfrom, apto, departureTime, daysOfWeek) VALUES ('SU 1142', 'SVO', 'AAQ', '14:55:00',1);
@@ -113,3 +160,9 @@ INSERT INTO FlightDays (day, flightId) VALUES (1,8);
 INSERT INTO FlightDays (day, flightId) VALUES (7,9);
 INSERT INTO FlightDays (day, flightId) VALUES (7,10);
 INSERT INTO FlightDays (day, flightId) VALUES (3,10);
+
+
+
+
+-- Назначенные на полет:
+INSERT INTO FlightAssign (flightId, Pilot, Radiop, Navigator, Hostess1, Hostess2, Hostess3) VALUES (1, 1, 8, 12, 17, 18, 19);
