@@ -116,4 +116,12 @@ public class FlightAssignDao implements Dao {
         }
     }
 
+    public boolean hasFlightAssign (Employee employee) {
+        List<FlightAssignment> flightAs = new ArrayList<>();
+
+        if (flightAs.contains(employee)) {return true;}
+        else {return false;}
+
+    }
+
 }

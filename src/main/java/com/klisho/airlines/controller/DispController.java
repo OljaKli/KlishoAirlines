@@ -26,13 +26,21 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.*;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 @WebServlet("/disp/")
 public class DispController extends HttpServlet {
 
+    private static final Logger logger = LogManager.getLogger(AdminController.class);
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        logger.debug("deGet Disp started:" + request.getRemoteAddr());
+
         try {
             InitialContext ctx = new InitialContext();
             DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ProdDB"); //JNDI
@@ -45,6 +53,7 @@ public class DispController extends HttpServlet {
         } catch (NamingException ne) {
             throw new ServletException(ne);
         } catch (SQLException sqle) {
+            logger.error("SQL exception:", sqle);
             throw new ServletException(sqle);
         }
     }
@@ -102,6 +111,9 @@ public class DispController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        logger.debug("doPost Disp started:" + request.getRemoteAddr());
+
         try {
             InitialContext ctx = new InitialContext();
             DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ProdDB"); //JNDI
@@ -128,6 +140,7 @@ public class DispController extends HttpServlet {
                         hostess2 != null &&
                         hostess3 != null)
                 {
+                    logger.info("Creating new flightAssign");
                     flightAssignDao.createFlightAssign(
                             Integer.parseInt(flightId),
                             Integer.parseInt(pilot),
@@ -149,6 +162,7 @@ public class DispController extends HttpServlet {
         } catch (NamingException ne) {
             throw new ServletException(ne);
         } catch (SQLException sqle) {
+            logger.error("SQL exception:", sqle);
             throw new ServletException(sqle);
         }
     }

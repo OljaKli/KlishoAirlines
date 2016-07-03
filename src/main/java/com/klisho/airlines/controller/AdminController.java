@@ -19,6 +19,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * Created by Ola-Mola on 12/06/16.
  */
@@ -26,9 +29,14 @@ import java.util.List;
 @WebServlet("/admin/")
 public class AdminController extends HttpServlet {
 
+    private static final Logger logger = LogManager.getLogger(AdminController.class);
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
+
+        logger.info("deGet():" + request.getRemoteAddr());
+
         try {
             InitialContext ctx = new InitialContext();
             DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ProdDB"); //JNDI
@@ -54,6 +62,7 @@ public class AdminController extends HttpServlet {
         } catch (NamingException ne) {
             throw new ServletException(ne);
         } catch (SQLException sqle) {
+            logger.error("SQL exception:", sqle);
             throw new ServletException(sqle);
         }
     }
@@ -62,6 +71,9 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        logger.debug("doPost():" + request.getRemoteAddr());
+
         try {
             InitialContext ctx = new InitialContext();
             DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ProdDB"); //JNDI
@@ -77,7 +89,7 @@ public class AdminController extends HttpServlet {
                 // TODO  распарсить галочки дней в List<Integer>, передать вместо EVERY_DAY
                 // написать отдельный метод, а мб и нет
 
-               List<Integer> daysOfWeek = new ArrayList<Integer>();
+               List<Integer> daysOfWeek = new ArrayList<>();
 
                 if(request.getParameter("chkMon") != null) {
                 daysOfWeek.add(1);    }
@@ -105,7 +117,9 @@ public class AdminController extends HttpServlet {
                         from != null &&
                         to != null &&
                         departureTime != null) {
+                    logger.info("Creating new flight: " + flightNumber);
                     dao.createFlight(flightNumber, from, to, LocalTime.parse(departureTime), daysOfWeek);
+
                 }
 
                 List<Flight> flights = dao.getAllFlights();
@@ -119,6 +133,7 @@ public class AdminController extends HttpServlet {
         } catch (NamingException ne) {
             throw new ServletException(ne);
         } catch (SQLException sqle) {
+            logger.error("SQL exception:", sqle);
             throw new ServletException(sqle);
         }
     }

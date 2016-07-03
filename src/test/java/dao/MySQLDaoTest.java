@@ -15,6 +15,7 @@ import org.junit.Test;
 import java.security.cert.PKIXRevocationChecker;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -34,7 +35,8 @@ public class MySQLDaoTest {
         Class.forName("com.mysql.jdbc.Driver").newInstance();
 
         connection = DriverManager.getConnection("jdbc:mysql://localhost/airlines?" +
-                                                    "user=root&password=n45v7845");
+                                                    "user=root&password=n45v7845"+
+                "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
     }
 
     @Test
@@ -137,7 +139,7 @@ public class MySQLDaoTest {
 
 
     @Test
-    public void testCreateFlight () {
+    public void testCreateFlight () throws SQLException {
 
         FlightDao dao = new FlightDao(connection);
         {

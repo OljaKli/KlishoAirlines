@@ -74,6 +74,12 @@
         </c:forEach>
     </select><br/>
 
+
+    <%--<c:if test="${hostess1 = hostess2}">--%>
+    <%--<p>Error: you have selected the two similar crew members - <c:out value="${hostess1}"/><p>--%>
+    <%--</c:if>--%>
+
+
     <input type="submit" value=<fmt:message bundle="${l10n}" key="disp.pilot.select"/>><br/>
 </form>
 

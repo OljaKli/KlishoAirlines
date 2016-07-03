@@ -109,50 +109,44 @@ public class FlightDao implements Dao {
         }
     }
 
-    public Optional<Flight> createFlight(String flightNumber, String apFrom, String apTo, LocalTime departureTime, List<Integer> days) {
-        try {
+    public Optional<Flight> createFlight(String flightNumber, String apFrom, String apTo, LocalTime departureTime, List<Integer> days)
+        throws SQLException
+    {
+        final PreparedStatement prStatement = connection.prepareStatement(
+                "INSERT INTO Flight (flightNumber, apfrom, apto, departureTime) values (?, ?, ?, ?)",
+                Statement.RETURN_GENERATED_KEYS);
 
-            final PreparedStatement prStatement = connection.prepareStatement(
-                    "INSERT INTO Flight (flightNumber, apfrom, apto, departureTime) values (?, ?, ?, ?)",
-                    Statement.RETURN_GENERATED_KEYS);
-
-            prStatement.setString(1, flightNumber);
-            prStatement.setString(2, apFrom);
-            prStatement.setString(3, apTo);
-            prStatement.setString(4, departureTime.toString(("HH:mm")));
-
-
-
-            int rowsAffected = prStatement.executeUpdate();//rowsAffected = the number of changed rows
-
-            ResultSet rs = prStatement.getGeneratedKeys();
-            if (rs.next()) {
-               // prStatement.executeUpdate();
-                int id = rs.getInt(1);
-
-                // TODO insert days of week
-               // for (int n: days) {
-                final PreparedStatement prStatement2 = connection.prepareStatement(
-                        "INSERT INTO FlightDays (flightId, day) values (?,?)");
-                prStatement2.setInt(1, id);
-
-                for (int n = 0; n < days.size(); n++) {
-                    prStatement2.setInt(2, days.get(n));
-                    int rowsAffected2 = prStatement2.executeUpdate();
-                }
-                //int rowsAffected2 = prStatement2.executeUpdate();
+        prStatement.setString(1, flightNumber);
+        prStatement.setString(2, apFrom);
+        prStatement.setString(3, apTo);
+        prStatement.setString(4, departureTime.toString(("HH:mm")));
 
 
-                return getFlightById(id);
+
+        int rowsAffected = prStatement.executeUpdate();//rowsAffected = the number of changed rows
+
+        ResultSet rs = prStatement.getGeneratedKeys();
+        if (rs.next()) {
+           // prStatement.executeUpdate();
+            int id = rs.getInt(1);
+
+            // TODO insert days of week
+           // for (int n: days) {
+            final PreparedStatement prStatement2 = connection.prepareStatement(
+                    "INSERT INTO FlightDays (flightId, day) values (?,?)");
+            prStatement2.setInt(1, id);
+
+            for (int n = 0; n < days.size(); n++) {
+                prStatement2.setInt(2, days.get(n));
+                int rowsAffected2 = prStatement2.executeUpdate();
             }
-            else  {
-                throw new RuntimeException("Failed to insert new flight");
-            }
+            //int rowsAffected2 = prStatement2.executeUpdate();
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+
+            return getFlightById(id);
         }
-
+        else {
+            throw new RuntimeException("Failed to insert new flight");
+        }
     }
-
 }

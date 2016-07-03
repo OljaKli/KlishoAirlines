@@ -31,44 +31,44 @@
     <orderEntry type="module-library" scope="PROVIDED">
       <library>
         <CLASSES>
-          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-api/9.0.0.M6/47679fc92684ae41e69c5b4eb95509e12caa5819/tomcat-api-9.0.0.M6.jar!/"/>
+          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-api/9.0.0.M8/cfd1adf1fac2cbfd2cbabd09f72e59cc51041e25/tomcat-api-9.0.0.M8.jar!/"/>
         </CLASSES>
         <JAVADOC/>
         <SOURCES>
-          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-api/9.0.0.M6/a13478d0096234e79a2e42e1f6bb402f9397113e/tomcat-api-9.0.0.M6-sources.jar!/"/>
+          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-api/9.0.0.M8/4aabd698d713e8f8f829e698aaa197fa7d479a8f/tomcat-api-9.0.0.M8-sources.jar!/"/>
         </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="module-library" scope="PROVIDED">
       <library>
         <CLASSES>
-          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-jsp-api/9.0.0.M6/8ebf4d3a46f89531bf228b18a90319e05061e6db/tomcat-jsp-api-9.0.0.M6.jar!/"/>
+          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-jsp-api/9.0.0.M8/383fb4c1c695d9ddb72184db60683ebd8609326f/tomcat-jsp-api-9.0.0.M8.jar!/"/>
         </CLASSES>
         <JAVADOC/>
         <SOURCES>
-          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-jsp-api/9.0.0.M6/8d16f942d7a5ce20dd957a80d1c8d356b00ffd58/tomcat-jsp-api-9.0.0.M6-sources.jar!/"/>
+          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-jsp-api/9.0.0.M8/fc668c59b5c8daab05edef914e562776ed31143f/tomcat-jsp-api-9.0.0.M8-sources.jar!/"/>
         </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="module-library" scope="PROVIDED">
       <library>
         <CLASSES>
-          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-servlet-api/9.0.0.M6/ffe6697ed53e9ff306a92cd7aaa0521fefda47c8/tomcat-servlet-api-9.0.0.M6.jar!/"/>
+          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-servlet-api/9.0.0.M8/760ee9f14f7ebc269d5b81e7bfcbd6cf5dc2dc1d/tomcat-servlet-api-9.0.0.M8.jar!/"/>
         </CLASSES>
         <JAVADOC/>
         <SOURCES>
-          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-servlet-api/9.0.0.M6/7e27f82dbedea58080921e5ab40437410c2acd4/tomcat-servlet-api-9.0.0.M6-sources.jar!/"/>
+          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-servlet-api/9.0.0.M8/ccda5e13dfa6eba8f669fa8c6a30f23356ef6fff/tomcat-servlet-api-9.0.0.M8-sources.jar!/"/>
         </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="module-library" scope="PROVIDED">
       <library>
         <CLASSES>
-          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-el-api/9.0.0.M6/f383a1a5e6243ee0777d413c5adb74af2f03012d/tomcat-el-api-9.0.0.M6.jar!/"/>
+          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-el-api/9.0.0.M8/54f933f91e8c932713b04c2abdd7b33544d82f8b/tomcat-el-api-9.0.0.M8.jar!/"/>
         </CLASSES>
         <JAVADOC/>
         <SOURCES>
-          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-el-api/9.0.0.M6/18d4e9d0dafe5d046ead228f6fc2980467418d47/tomcat-el-api-9.0.0.M6-sources.jar!/"/>
+          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-el-api/9.0.0.M8/454a846a5fe35b638e642e612e9d3ece1b3ee8bb/tomcat-el-api-9.0.0.M8-sources.jar!/"/>
         </SOURCES>
       </library>
     </orderEntry>
@@ -97,11 +97,55 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/5.1.39/4617fe8dc8f1969ec450984b0b9203bc8b7c8ad5/mysql-connector-java-5.1.39.jar!/"/>
+          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/6.0.3/49506be68e2ab1b619d77dee24c2e55d399d371a/mysql-connector-java-6.0.3.jar!/"/>
         </CLASSES>
         <JAVADOC/>
         <SOURCES>
-          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/5.1.39/613d0456fa79f67749af2754b6c23abf43b9574f/mysql-connector-java-5.1.39-sources.jar!/"/>
+          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/6.0.3/e17f17716cde5f5728b9d928eca54eee157ba7e6/mysql-connector-java-6.0.3-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/javax.servlet/jstl/1.2/74aca283cd4f4b4f3e425f5820cda58f44409547/jstl-1.2.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/javax.servlet/jstl/1.2/2f5877ef15adb721421e80f5aa2b6fe069eec8ed/jstl-1.2-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-api/2.6.1/d2ad7ee0b0450204d720b4bc3f99b50e208bf51e/log4j-api-2.6.1.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-api/2.6.1/cd871b869d05a7c81e7ec9f9461dd5b3d62b9541/log4j-api-2.6.1-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-core/2.6.1/2b557bf1023c3a3a0f7f200fafcd7641b89cbb83/log4j-core-2.6.1.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-core/2.6.1/daecf4cf267ad7c7f8aa477fc84d144ef04162f7/log4j-core-2.6.1-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-web/2.6.1/f8fe59ace4953439fd011ad1d05e9f484ca91afa/log4j-web-2.6.1.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar:///Users/Ola-Mola/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-web/2.6.1/f86535a7c5b030207621efb62a978af7a7e94c5b/log4j-web-2.6.1-sources.jar!/"/>
         </SOURCES>
       </library>
     </orderEntry>
